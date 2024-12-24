@@ -1,3 +1,14 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.0.0"
+    }
+  }
+
+  required_version = ">= 1.1.0"
+}
+
 # Azure Provider Authentication with Service Principal
 provider "azurerm" {
   features {}
@@ -7,7 +18,6 @@ provider "azurerm" {
   tenant_id       = var.tenant_id
   subscription_id = var.subscription_id
 }
-
 
 # Resource Group for Networking
 resource "azurerm_resource_group" "network_rg" {
