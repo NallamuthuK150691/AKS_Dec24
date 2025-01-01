@@ -141,3 +141,24 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     azurerm_application_gateway.appgw
   ]
 }
+# Create an Azure SQL Server
+resource "azurerm_sql_server" "sql_server" {
+  name                         = var.sql_server_name
+  resource_group_name          = azurerm_resource_group.rg.name
+  location                     = azurerm_resource_group.rg.location
+  administrator_login          = var.sql_admin_username
+  administrator_login_password = var.sql_admin_password
+
+  tags = {
+    Environment = "Dev"
+  }
+}
+
+# Create an Azure SQL Database
+resource "azurerm_sql_database" "sql_database" {
+  name                = var.sql_database_name
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  server_name         = azurerm_sql_server.sql_server.name
+  sku_name            = var.sql_sku_name
+}

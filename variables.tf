@@ -1,6 +1,6 @@
 # General Variables
 variable "location" {
-  default = "East US"
+  default = "Central US"
 }
 
 # Resource Group Names
@@ -61,4 +61,47 @@ variable "tenant_id" {
 variable "subscription_id" {
   description = "Azure Subscription ID"
   sensitive   = true
+}
+# Resource Group Name
+variable "resource_group_name" {
+  description = "The name of the resource group where resources will be created"
+  type        = string
+}
+
+# Resource Group Location
+variable "location" {
+  description = "The Azure region where resources will be created"
+  type        = string
+}
+
+# SQL Server Admin Username
+variable "sql_admin_username" {
+  description = "The administrator username for the SQL Server"
+  type        = string
+}
+
+# SQL Server Admin Password
+variable "sql_admin_password" {
+  description = "The administrator password for the SQL Server"
+  type        = string
+  sensitive   = true
+}
+
+# SQL Server Name
+variable "sql_server_name" {
+  description = "The name of the SQL Server"
+  type        = string
+}
+
+# SQL Database Name
+variable "sql_database_name" {
+  description = "The name of the SQL Database"
+  type        = string
+}
+
+# SQL Database SKU
+variable "sql_sku_name" {
+  description = "The SKU for the SQL Database (e.g., S0, S1)"
+  type        = string
+  default     = "S0"
 }
